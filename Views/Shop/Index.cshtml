@@ -1,0 +1,46 @@
+﻿@model List<projectTest.ViewModels.ShopOutputModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Account/_LoginLayout.cshtml";
+}
+<div class="table-container">
+    @Html.ActionLink("My preferred Shops", "Preferredshops") |
+    @Html.ActionLink("Main Page", "Index")
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Distance</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Distance)
+                </td>
+                <td>
+                    <a class="delete" data-model-id="@item.ShopId" onclick="Delete(this)">Like</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+    <div id="coordinates">
+        <b>Your location:</b><br />Latitude:  <div id="lt"></div><br />Longitude:<div id="lg"></div>
+    </div>
+    @Scripts.Render("~/bundles/document")

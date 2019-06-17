@@ -1,0 +1,15 @@
+﻿@model List<projectTest.ViewModels.ShopOutputModel>
+@{
+    Layout = null;
+}
+@Html.ActionLink("My preferred Shops", "Preferredshops")
+@Html.ActionLink("Main Page", "Index")
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Name</li>
+        <li>@item.Longitude</li>
+        <li>@item.Latitude</li>
+        <li>@item.Distance</li>
+    }
+</ul>

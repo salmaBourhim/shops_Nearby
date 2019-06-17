@@ -1,0 +1,33 @@
+﻿@model projectTest.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+@{
+    Layout = "~/Views/Account/_LoginLayout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="login_card card-container">
+    <img id="profile-img" class="profile-img-card" src="~/Content/images/register_icon.png" />
+    <span class="text-danger all_field"></span>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.TextBoxFor(m => m.Username, new { @class = "form-control isRequired", placeholder = "Username", required = "required" })
+    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control isRequired", placeholder = "Email", required = "required" })
+    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control isRequired", placeholder = "Password", required = "required" })
+    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control isRequired", placeholder = "ConfirmPassword", required = "required" })
+    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+
+    <button class="btn btn-lg btn-success btn-block btn-signin">Register</button>
+</div>
+        }
